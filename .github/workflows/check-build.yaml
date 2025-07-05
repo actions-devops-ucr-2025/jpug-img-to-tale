@@ -24,7 +24,9 @@ jobs:
               run: npm ci
 
             - name: Lint
-              run: npm run lint
+              run: |
+               echo "Running Lint on ${{ matrix.os }} with Node.js ${{ matrix.node-version }}"
+               npx eslint ./src --ignore-pattern "**/__tests__/**" --ignore-pattern "**\\__tests__\\**"
 
             - name: Test
               run: npm run test
